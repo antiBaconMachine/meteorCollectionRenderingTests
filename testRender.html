@@ -1,0 +1,36 @@
+<head>
+  <title>testRender</title>
+</head>
+
+<body>
+  {{> findWithNoCount}}
+  {{> findWithCount}}
+  {{> findWithFetch}}
+</body>
+
+<template name="findWithNoCount">
+  {{>listGames games}}
+</template>
+
+<template name="findWithCount">
+    {{games.count}}
+    {{>listGames games}}
+</template>
+
+<template name="findWithFetch">
+  {{>listGames games}}
+</template>
+
+<template name="listGames">
+    <ul>
+        {{#if count}}
+            {{#each this}}
+            <li class="u-margin--sm">
+                <a href="/game/show/{{_id}}" class="col-md-8">{{name}}</a>
+            </li>
+            {{/each}}
+        {{else}}
+        <span class="t-small">No games</span>
+        {{/if}}
+    </ul>
+</template>
